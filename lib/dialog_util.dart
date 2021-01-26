@@ -11,6 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingyun_widget/toast.dart';
 
+import 'blur_dialog.dart';
+
 class DialogUtil {
   static getDialogCloseButton(context,
           {Function() customTapFunc, Color color = Colors.redAccent}) =>
