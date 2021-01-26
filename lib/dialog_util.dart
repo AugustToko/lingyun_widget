@@ -10,7 +10,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lingyun_widget/toast.dart';
-import 'file:///C:/Users/chenlongcould/AndroidStudioProjects/lingyun_widget/lib/blur_dialog.dart';
 
 class DialogUtil {
   static getDialogCloseButton(context,
