@@ -21,15 +21,15 @@ class DrinkListCard extends StatefulWidget {
   final double height;
 
   const DrinkListCard({
-    Key key,
-    this.leading,
-    this.title,
-    this.trailing,
-    this.contentTitle,
-    this.contentBody,
-    this.bgColor = Colors.black, this.height,
-  })  : assert(title != null),
-        super(key: key);
+    Key? key,
+    required this.leading,
+    required this.title,
+    required this.trailing,
+    required this.contentTitle,
+    required this.contentBody,
+    this.bgColor = Colors.black,
+    required this.height,
+  }) : super(key: key);
 
   @override
   _DrinkListCardState createState() {
@@ -42,13 +42,12 @@ class _DrinkListCardState extends State<DrinkListCard>
   // 标记是否已经打开
   bool _wasOpen = true;
 
-  AnimationController _liquidSimController;
+  late AnimationController _liquidSimController =
+      AnimationController(vsync: this, duration: Duration(milliseconds: 3000));
 
   @override
   void initState() {
-    _liquidSimController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 3000));
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
       _liquidSimController.addListener(_rebuildIfOpen);
     });
     super.initState();
@@ -68,7 +67,8 @@ class _DrinkListCardState extends State<DrinkListCard>
 
     double cardHeight = _wasOpen
         ? (widget.height == null
-            ? (widget.contentBody.split('\n').length * 50).toDouble() : widget.height)
+            ? (widget.contentBody.split('\n').length * 50).toDouble()
+            : widget.height)
         : DrinkListCard.nominalHeightClosed;
 
     return GestureDetector(
@@ -101,7 +101,7 @@ class _DrinkListCardState extends State<DrinkListCard>
                 //Card Content
                 Container(
                   margin:
-                  const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
                   //Wrap content in a ScrollView, so there's no errors on over scroll.
                   child: SingleChildScrollView(
                     //We don't actually want the scrollview to scroll, disable it.
@@ -208,11 +208,12 @@ class AppColors {
 }
 
 class Styles {
-  static TextStyle text(double size,
-      bool bold, {
-        double height,
-        Color color,
-      }) {
+  static TextStyle text(
+    double size,
+    bool bold, {
+    double? height,
+    Color? color,
+  }) {
     return TextStyle(
       fontSize: size,
       color: color,

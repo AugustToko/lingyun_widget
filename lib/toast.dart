@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lingyun_widget/fb/flushbar.dart';
 import 'package:oktoast/oktoast.dart';
 
 Flushbar showSuccessToast(BuildContext context, String message) {
@@ -17,7 +17,7 @@ Flushbar showSuccessToast(BuildContext context, String message) {
     ),
     duration: const Duration(seconds: 4),
     backgroundGradient: LinearGradient(
-      colors: [Colors.green[600], Colors.green[400]],
+      colors: [Colors.green[600]!, Colors.green[400]!],
     ),
     onTap: (flushbar) => flushbar.dismiss(),
   )..show(context);
@@ -34,14 +34,15 @@ Flushbar showErrorToast(BuildContext context, String message) {
     ),
     duration: const Duration(seconds: 4),
     backgroundGradient: LinearGradient(
-      colors: [Colors.red[600], Colors.red[400]],
+      colors: [Colors.red[600]!, Colors.red[400]!],
     ),
     onTap: (flushbar) => flushbar.dismiss(),
   )..show(context);
 }
 
-Size getWidgetSize(GlobalKey key) {
-  final RenderBox renderBox = key.currentContext?.findRenderObject();
+Size? getWidgetSize(GlobalKey key) {
+  final RenderBox? renderBox =
+      key.currentContext?.findRenderObject() as RenderBox;
   return renderBox?.size;
 }
 

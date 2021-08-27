@@ -13,8 +13,11 @@ class LoadingDialog extends Dialog {
 
   final bool cancelable;
 
-  LoadingDialog({Key key, @required this.text, this.cancelable = false,})
-      : super(key: key);
+  LoadingDialog({
+    Key? key,
+    required this.text,
+    this.cancelable = false,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

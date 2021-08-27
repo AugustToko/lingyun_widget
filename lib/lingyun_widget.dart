@@ -6,11 +6,11 @@ const _logoColor = Color.fromARGB(255, 0, 188, 255);
 
 Widget lingYunLogo(
   final BuildContext context, {
-  Color color,
+  Color? color,
   bool hideText = false,
-  String appName,
-  double height,
-  EdgeInsets padding,
+  String? appName,
+  double? height,
+  EdgeInsets? padding,
 }) {
   return Column(
     children: <Widget>[
@@ -27,7 +27,7 @@ Widget lingYunLogo(
       if (!hideText)
         Text(
           ' - Ling Yun ${appName ?? ''} - ',
-          style: Theme.of(context).textTheme.subtitle2.copyWith(color: color),
+          style: Theme.of(context).textTheme.subtitle2!.copyWith(color: color),
         ),
     ],
   );
@@ -36,7 +36,7 @@ Widget lingYunLogo(
 Widget lingYunLogoIcon(
   final BuildContext context, {
   double height = 100,
-  Color color,
+  Color? color,
 }) {
   return Image.asset(
     'assets/images/lingyun-logo.png',

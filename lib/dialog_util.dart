@@ -15,7 +15,7 @@ import 'blur_dialog.dart';
 
 class DialogUtil {
   static getDialogCloseButton(context,
-          {Function() customTapFunc, Color color = Colors.redAccent}) =>
+          {void Function()? customTapFunc, Color color = Colors.redAccent}) =>
       FlatButton(
           onPressed: customTapFunc ??
               () {
@@ -29,7 +29,7 @@ class DialogUtil {
   @Deprecated('Use showDialog instead')
   static void showAlertDialog(final BuildContext context, final String title,
       final String content, final List<Widget> actions,
-      [final bool cancelAble]) {
+      [final bool? cancelAble]) {
     showDialog(
       barrierDismissible: cancelAble ?? true,
       context: context,
@@ -41,13 +41,12 @@ class DialogUtil {
     );
   }
 
-  static Future<T> showBlurDialog<T>(
+  static Future<T?> showBlurDialog<T>(
       final BuildContext context, final WidgetBuilder builder,
       {final bool barrierDismissible = true}) {
     final ThemeData theme = Theme.of(context);
 
-    return Navigator.of(context, rootNavigator: true)
-        .push<T>(MyBlurDialogRoute<T>(
+    return Navigator.of(context, rootNavigator: true).push<T>(MyBlurDialogRoute(
       pageBuilder: (BuildContext buildContext, Animation<double> animation,
           Animation<double> secondaryAnimation) {
         final Widget pageChild = Builder(builder: builder);
@@ -65,8 +64,11 @@ class DialogUtil {
     ));
   }
 
-  static Future<bool> showQuitDialog(final BuildContext context,
-      {bool blurBG = false, String appName = 'APP NAME'}) {
+  static Future<bool?> showQuitDialog(
+    final BuildContext context, {
+    bool blurBG = false,
+    String appName = 'APP NAME',
+  }) {
     var ad = AlertDialog(
       title: Text('退出警告'),
       content: Text("确定退出 $appName?"),
@@ -84,19 +86,17 @@ class DialogUtil {
       ],
     );
 
-    var builder = (context) {
-      return ad;
-    };
+    var builder = (context) => ad;
 
     return blurBG
-        ? showBlurDialog(context, builder)
-        : showDialog(
+        ? showBlurDialog<bool>(context, builder)
+        : showDialog<bool>(
             context: context,
             builder: builder,
           );
   }
 
-  static Future<bool> showExitEditorDialog(final BuildContext context,
+  static Future<bool?> showExitEditorDialog(final BuildContext context,
       final bool needBackup, final Function() onTapSave) {
     return showDialog(
       barrierDismissible: false,
