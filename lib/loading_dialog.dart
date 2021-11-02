@@ -7,7 +7,15 @@
 
 import 'package:flutter/material.dart';
 
-@deprecated
+@Deprecated('废弃 使用 overlay 包装 LoadingDialog')
+Future<void> loadingWait(final BuildContext context, String text) {
+  return showDialog(
+    context: context,
+    builder: (_) => LoadingDialog(text: text),
+  );
+}
+
+@Deprecated('废弃 使用 overlay 包装 LoadingDialog')
 class LoadingDialog extends Dialog {
   final String text;
 

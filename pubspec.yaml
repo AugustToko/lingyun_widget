@@ -13,10 +13,7 @@ dependencies:
     sdk: flutter
   oktoast: ^3.1.1
   flushbar:
-    git:
-      url: git://github.com/prasadsunny1/flushbar
-      ref: master
-
+    path: ../flushbar
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -142,14 +142,14 @@ class _DrinkListCardState extends State<DrinkListCard>
     return Row(
       children: <Widget>[
         //Icon
-        widget.leading ?? const SizedBox(),
+        widget.leading,
         SizedBox(width: 24),
         //Label
         Expanded(
-          child: widget.title ?? const SizedBox(),
+          child: widget.title,
         ),
         //Star Icon
-        widget.trailing ?? const SizedBox()
+        widget.trailing
       ],
     );
   }
