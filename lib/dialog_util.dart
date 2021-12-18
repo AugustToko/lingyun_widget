@@ -9,7 +9,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:lingyun_widget/toast.dart';
 
 import 'blur_dialog.dart';
 
@@ -146,7 +145,6 @@ class DialogUtil {
           onPressed: () {
             afterLogout();
             Navigator.pop(context);
-            showSuccessToast(context, "您已登出!");
           },
           child: Text("登出")),
       FlatButton(
