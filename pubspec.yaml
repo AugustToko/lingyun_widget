@@ -1,7 +1,6 @@
 name: lingyun_widget
 description: LingYun Widgets.
 version: 0.0.3
-author: Gikode <827266641@qq.com>
 homepage: none
 
 environment:
@@ -12,16 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
   oktoast: ^3.1.1
-  flushbar:
-    path: ../flushbar
+  another_flushbar: ^1.10.28
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
 flutter:
   uses-material-design: true
   assets:
